@@ -155,6 +155,16 @@ module.exports = function (grunt) {
 				commands: [
 					['ssh', '--command=cd /var/sites/<%= site.id %> && bash scripts/cleanup.sh']
 				]
+			},
+			flush_cache: {
+				commands: [
+					['ssh', '--command=cd /var/sites/investorplacedev && bash scripts/flush_cache.sh']
+				]
+			},
+			flush_mem: {
+				commands: [
+					['ssh', '--command=cd /var/sites/investorplacedev && bash scripts/flush_mem.sh']
+				]
 			}
 		}
 	});
@@ -174,6 +184,7 @@ module.exports = function (grunt) {
 	grunt.registerTask('proxy_on', ['vagrant_commands:proxy_on']);
 	grunt.registerTask('proxy_off', ['vagrant_commands:proxy_off']);
 	grunt.registerTask('cleanup', ['vagrant_commands:cleanup']);
+	grunt.registerTask( 'flush', ['vagrant_commands:flush_cache', 'vagrant_commands:flush_mem'] );
 
 	grunt.util.linefeed = '\n';
 };
