@@ -24,7 +24,7 @@ function getSiteInfo() {
     this.site = {
       name:      props.siteName,
       url:       props.siteUrl,
-      liveUrl:   props.liveUrl,
+      liveUrl:   props.liveUrl
     };
     done();
   }.bind(this));
